@@ -5,8 +5,17 @@ metadata:
   labels:
     app: nodeapp
 spec:
-  containers:
-    - name: nodeapp
-      image: cloudiardocker/nodeapp:tagVersion
-      ports:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - name: nodeapp
+        image: cloudiardocker/nodeapp:tagVersion
+        ports:
         - containerPort: 8080
