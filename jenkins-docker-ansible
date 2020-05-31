@@ -12,8 +12,8 @@ pipeline {
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u kammana -p ${dockerHubPwd}"
-                    sh "docker push kammana/node-app:${DOCKER_TAG}"
+                    sh "docker login -u cloudiardocker -p ${dockerHubPwd}"
+                    sh "docker push cloudiardocker/node-app:${DOCKER_TAG}"
                 }
             }
         }
