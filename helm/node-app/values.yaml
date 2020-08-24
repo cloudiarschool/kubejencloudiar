@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: kammana/nodeapp
+  repository: cloudiardocker/nodeapp
   tag: v1
   pullPolicy: IfNotPresent
 
