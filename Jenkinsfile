@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Dockerhub Push') {
             steps{
-                docker.withRegistry([ credentialsId: "dockerhub", url: "https://registry.hub.docker.com" ]){
+                withCredentials([ credentialsId: "dockerhub", url: "https://registry.hub.docker.com" ]){
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
                 }
                 
