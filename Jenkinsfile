@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         DOCKER_TAG = getDockerTag()
-        registry = "cloudiardocker"
+        registry = "cloudiardocker/nodeapp"
         registryCredential = "dockerhub"
         
         
