@@ -9,6 +9,13 @@ pipeline {
                 sh "docker build . -t cloudiardocker/nodeapp:${DOCKER_TAG}"
             }
         }
+        stage('Dockerhub Push') {
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                sh "docker login -u cloudiardocker -p ${dockerHubPwd}"
+                sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
+            }
+            
+        }
             
     }
    }
