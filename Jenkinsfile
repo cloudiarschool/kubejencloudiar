@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         DOCKER_TAG = getDockerTag()
+        PASSWORD = credentials('dockerHubPwd')
     }
     stages {
         stage('Build Docker image') {
@@ -12,7 +13,7 @@ pipeline {
         stage('Dockerhub Push') {
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u cloudiardocker --password-stdin ${dockerHubPwd}"
+                    sh "docker login -u cloudiardocker -p ${PASSWORD}"
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
                 }
             }
