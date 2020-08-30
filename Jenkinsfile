@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Dockerhub Push') {
             steps{
-                    sh "docker login -u cloudiardocker -p ${PASSWORD}"
+                    sh "docker login -u cloudiardocker --password-stdin ${PASSWORD}"
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
                 
             }
