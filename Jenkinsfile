@@ -16,9 +16,9 @@ pipeline {
                 script{
                     docker.withRegistry('',registryCredential){
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
-        }
-    }
-}
+                    }
+                }
+           }
         stage('Deploy to K8S'){
             steps{
                 sh "chmod +x changeTag.sh"
@@ -32,10 +32,10 @@ pipeline {
                             sh "ssh ec2-user@54.224.104.153 kubectl create -f ."
                            }
                        }
-                  }
-            }
+                    }
+               }
             
-        }
+            }
         }
             
     }
