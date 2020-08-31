@@ -3,9 +3,7 @@ pipeline {
     environment {
         DOCKER_TAG = getDockerTag()
         registry = "cloudiardocker/nodeapp"
-        registryCredential = "dockerhub"
-        
-        
+        registryCredential = "dockerhub"  
     }
     stages {
         stage('Build Docker image') {
@@ -38,10 +36,10 @@ pipeline {
             }
             
         }
+        }
             
     }
-    }
-
+}
 def getDockerTag() {
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag 
