@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        DOCKER_TAG = "getDockerTag()"
+        DOCKER_TAG = getDockerTag()
         registry = "cloudiardocker/nodeapp"
         registryCredential = "dockerhub"  
     }
@@ -37,7 +37,8 @@ pipeline {
         }
     }  
 }
-def getDockerTag() {
+def getDockerTag() 
+{
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag 
 }
