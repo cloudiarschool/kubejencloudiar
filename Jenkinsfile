@@ -30,7 +30,7 @@ pipeline {
                             sh "ssh ec2-user@54.224.104.153 kubectl apply -f . -n nodejs"
                         }catch(error) {
                             sh "ssh ec2-user@54.224.104.153 kubectl create -f . -n nodejs"
-                           }
+                        }
                        }
                     }
                }
