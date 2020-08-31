@@ -16,6 +16,7 @@ pipeline {
                 script {
                     docker.withRegistry('',registryCredential){
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
+                    }
                 }
             }
         }
@@ -35,6 +36,7 @@ pipeline {
             }
         }   
     }  
+        }
 }
 def getDockerTag() {
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
