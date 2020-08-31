@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Dockerhub Push') {
             steps{
-                script{
+                script {
                     docker.withRegistry('',registryCredential){
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
                 }
@@ -25,8 +25,8 @@ pipeline {
                 sh "./changeTag.sh ${DOCKER_TAG}"
                 sshagent(['kops-machine']) {
                     sh "scp -o StrictHostKeyChecking=no services.yml nodea-app-pod.yml ec2-user@54.224.104.153:/home/ec2-user/"
-                    script{
-                        try{
+                    script {
+                        try {
                             sh "ssh ec2-user@54.224.104.153 kubectl apply -f . -n nodejs"
                         }catch(error) {
                             sh "ssh ec2-user@54.224.104.153 kubectl create -f . -n nodejs"
