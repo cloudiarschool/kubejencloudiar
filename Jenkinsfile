@@ -27,7 +27,6 @@ pipeline {
 }
             stage('Deploy to K8S'){
                 steps{
-                    script{
                     sh "chmod +x changeTag.sh"
                     sh "./changeTag.sh ${DOCKER_TAG}"
                     sshagent(['kops-machine']) {
@@ -39,7 +38,6 @@ pipeline {
                                sh "ssh ec2-user@54.224.104.153 kubectl create -f ."
                            }
                         
-                }
             }
             
         }
