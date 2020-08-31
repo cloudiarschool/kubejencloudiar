@@ -1,10 +1,10 @@
-environment {
+pipeline {
+    agent any 
+    environment {
         DOCKER_TAG = getDockerTag()
         registry = "cloudiardocker/nodeapp"
         registryCredential = "dockerhub"  
     }
-pipeline {
-    agent any 
     stages {
         stage('Build Docker image') {
             steps {
