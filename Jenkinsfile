@@ -18,10 +18,6 @@ pipeline {
                 script{
                     docker.withRegistry('',registryCredential){
                     sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
-                }
-                
-            }
-            }
         }
     }
 }
@@ -37,8 +33,9 @@ pipeline {
                            }catch(error){
                                sh "ssh ec2-user@54.224.104.153 kubectl create -f ."
                            }
-                        
+                       }
             }
+                }
             
         }
             
