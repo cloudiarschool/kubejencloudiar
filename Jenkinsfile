@@ -34,11 +34,12 @@ pipeline {
                                sh "ssh ec2-user@54.224.104.153 kubectl create -f ."
                            }
                        }
+                  }
             }
-                }
             
         }
             
+    }
     }
 
 def getDockerTag() {
