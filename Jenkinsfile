@@ -3,7 +3,8 @@ pipeline {
     environment{
     DOCKER_TAG = getDockerTag()
     registryCredential = "dockerhub"
-    }
+    registry = "cloudiardocker/nodeapp"
+}
 
 stages {
     stage('Build docker image') {
