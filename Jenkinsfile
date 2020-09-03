@@ -15,11 +15,12 @@ stages {
     stage('Dockerhub push'){
         steps{
             script{
-                docker.withRegistry('',registryCredential)
+                docker.withRegistry('',registryCredential){
                 sh "docker push cloudiardocker/nodeapp:${DOCKER_TAG}"
             }
         }
     }
+}
 }
 
 }
