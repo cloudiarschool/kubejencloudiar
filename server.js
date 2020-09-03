@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('<h1 style="color:green;">Welcome to Cloudiar Meetup!!!</h1> \n');
+  res.send('<h1 style="color:green;">Nice to see you here!!!</h1> \n');
 });
 
 app.listen(PORT, HOST);
